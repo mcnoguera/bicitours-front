@@ -1,6 +1,6 @@
 $baseColor:#FF6F5E;
 $secondBaseColor:rgb(156, 71, 61);
-$colorFont:#A7D129;
+$colorFont:white;
 
 
 .container {
@@ -22,6 +22,10 @@ $colorFont:#A7D129;
 }
 
 .btn-dark {
+
+    background-color: #011627;
     color: $colorFont !important;
 
 }
+
+

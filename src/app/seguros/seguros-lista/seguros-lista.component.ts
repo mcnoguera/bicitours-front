@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Seguro } from './../Seguro';
-import { SeguroService } from './../seguro.service';
+import { SeguroService } from '../../core/services/seguro.service';
 const rowCards: HTMLElement = document.getElementById('row-cards');
 
 
@@ -23,23 +23,18 @@ export class SegurosListaComponent implements OnInit {
     'http://e00-co-marca.uecdn.es/claro/assets/multimedia/imagenes/2019/07/28/15642694355430.jpg'
 
   ]
-  listaSeguros: any;
+  listaSeguros: Seguro [];
 
   ngOnInit() {
-    // location.replace('http://localhost:4200/seguros/seguros-lista/seguros-lista.component.ts');
-    console.log(document.baseURI);
-    this.getSeguros()
-      .then(list => {
-        this.listaSeguros = list;
-        // console.log(this.listaSeguros.length);
-        // this.drawCards();
+    this.getSeguros();
 
-      });
   }
   getSeguros() {
-    return new Promise((resolve, reject) => {
-      this.seguroService.getSeguros().subscribe(listSeguros => resolve(listSeguros));
-    });
+
+    this.seguroService.getSeguros()
+     .subscribe(seguros => this.listaSeguros = seguros);
+    //return new Promise((resolve, reject) => {
+    //  this.seguroService.getSeguros().subscribe(listSeguros => resolve(listSeguros));
   }
 
 
